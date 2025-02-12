@@ -157,9 +157,9 @@ body{font-family: "Pretendard", sans-serif; font-size: 1.6rem; line-height: 1.5;
 }
 
 @media(max-width:768px){
-  .typing-container{font-size: 8.7241vh;}
+  .typing-container{font-size: 8.7241vh; top: 40%;}
   .btn_intro{flex-direction: column;}
-  .intro a{font-size: 3rem;}
+  .intro a{font-size: 2rem;  padding: 5px 30px;}
   .intro .object{width: 300px; height: 300px; background: url("../images/object_mobile.png"); opacity: 0.7;}
 }
 
@@ -214,7 +214,7 @@ body{font-family: "Pretendard", sans-serif; font-size: 1.6rem; line-height: 1.5;
 .title h2:nth-child(2){position: absolute; left: 170px;}
 
 @media(max-width:768px){
-  .title h2{font-size: 2.5rem; padding: 5px 25px;}
+  .title h2{font-size: 2.5rem; padding: 5px 20px;}
   .title h2:nth-child(2){left: 120px;}
 }
 
