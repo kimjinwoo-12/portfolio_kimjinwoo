@@ -1,22 +1,28 @@
 $('#fullpage').fullpage({
   responsiveWidth: 1024,
-  navigation: false, //기본값 false
-  navigationPosition: 'right', //기본값 right
-  navigationTooltips: ['Intro', 'About Me', 'Web', 'Graphic', 'Contact'],
-  showActiveTooltip: true, //기본값 false
+  autoScrolling: true,
+  fitToSection: false, /* 자동 높이 조절 비활성화 */
+  scrollOverflow: true, /* 내부 스크롤 활성화 */
+  scrollingSpeed: 700,
+  navigation: false,
+  navigationPosition: 'right',
+  navigationTooltips: ['Intro', 'About', 'Web', 'Graphic', 'Contact'],
+  showActiveTooltip: true,
+  anchors: ["Intro", "About", "Web", "Graphic", "Contact"],
+  menu: "#menu",
 
-  anchors: ["Intro", "About Me", "Web", "Graphic", "Contact"], // 각 섹션의 고유 ID 설정
-  menu: "#menu", // 네비게이션 메뉴 연결
-
-  afterLoad: function (origin, destination, direction, trigger) {
-    /*    if (destination == 5) { //2번구역에 도달했을 때
-         $("#header,#fp-nav").addClass("active");
-       } else {
-         $("#header,#fp-nav").removeClass("active");
-       } */
+  afterLoad: function (origin, destination, direction) {
+    console.log("현재 섹션:", destination.index, "방향:", direction);
   },
 
+  afterResize: function () {
+    fullpage_api.reBuild();
+  }
 });
+
+
+
+
 
 /* 타이핑 */
 const text1 = "Digital";
@@ -59,7 +65,7 @@ $(".about_me dl .btn_close").click(function () {
 })
 
 
-//web swiper
+/* //web swiper
 document.addEventListener("DOMContentLoaded", function () {
   var containor_web = new Swiper(".containor_web", {
     autoplay: {
@@ -106,5 +112,47 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+}); */
+
+document.addEventListener("DOMContentLoaded", function () {
+  function initializeSwiper(containerClass, nextButton, prevButton, progressClass, autoplay = false) {
+    return new Swiper(containerClass, {
+      autoplay: autoplay ? {
+        delay: 20000,
+        disableOnInteraction: false,
+      } : false,
+      speed: 1000,
+      navigation: {
+        nextEl: nextButton,
+        prevEl: prevButton,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets", // 버튼 종류 설정 'bullets' | 'fraction' | 'progressbar'
+        clickable: true, // 버튼 클릭 여부
+      },
+      effect: "fade",
+      fadeEffect: { crossFade: true },
+      loop: true,
+      on: {
+        slideChange: function () {
+          let slides = this.slides; // 모든 슬라이드
+          let realSlides = slides.length - slides.filter(slide => slide.classList.contains("swiper-slide-duplicate")).length; // 가상 슬라이드 제외
+          let progress = ((this.realIndex + 1) / realSlides) * 100;
+
+          // 진행 바 요소 찾기
+          let progressBar = document.querySelector(progressClass);
+          if (progressBar) {
+            progressBar.style.width = progress + "%";
+          }
+        }
+      }
+    });
+  }
+
+  var containor_web = initializeSwiper(".containor_web", ".next-button-web", ".prev-button-web", ".progress-fill-web", true);
+  var containor_graphic = initializeSwiper(".containor_graphic", ".next-button-graphic", ".prev-button-graphic", ".progress-fill-graphic");
 });
+
+
 
