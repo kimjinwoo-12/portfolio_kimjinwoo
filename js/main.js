@@ -9,11 +9,11 @@ $('#fullpage').fullpage({
   menu: "#menu", // 네비게이션 메뉴 연결
 
   afterLoad: function (origin, destination, direction, trigger) {
-    if (destination == 5) { //2번구역에 도달했을 때
-      $("#header,#fp-nav").addClass("active");
-    } else {
-      $("#header,#fp-nav").removeClass("active");
-    }
+    /*    if (destination == 5) { //2번구역에 도달했을 때
+         $("#header,#fp-nav").addClass("active");
+       } else {
+         $("#header,#fp-nav").removeClass("active");
+       } */
   },
 
 });
