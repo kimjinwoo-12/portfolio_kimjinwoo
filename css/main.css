@@ -237,8 +237,7 @@ body{font-family: "Pretendard", sans-serif; font-size: 1.6rem; line-height: 1.5;
 .next-button:hover{opacity: 0.5; transform: translateX(10%);}
 
 .swiper-pagination{bottom: 0; display: none;}
-.swiper-pagination-bullet{border-radius: 0; background: #000;}
-
+.swiper-pagination-bullet{border-radius: 0; background: #000; width: 25px; height: 3px; transition: all 0.2s linear;}
 
 /* Progress Bar를 Swiper 위쪽에 배치 */
 .progress-bar {
@@ -335,8 +334,9 @@ body{font-family: "Pretendard", sans-serif; font-size: 1.6rem; line-height: 1.5;
 .contact_bottom dl dd{opacity: 0.8;}
 
 @media(max-width: 1024px){
-  .contact{padding: 150px 0;}
-  .contact_bottom{flex-direction: column;}
+  .contact{padding: 50px 0;}
+  .contact_top{padding-bottom: 30px;}
+  .contact_bottom{flex-direction: column; gap: 30px;}
   .contact_bottom dl{width: 50%;}
   body{overflow-x: hidden;}
 }
