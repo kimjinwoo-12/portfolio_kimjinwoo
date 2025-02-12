@@ -16,12 +16,14 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 
   <!-- js -->
   <script defer src="js/jquery-3.7.1.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script defer src="js/common.js"></script> <!-- header -->
   <script defer src="js/main.js"></script> <!-- swiper -->
 </head>
@@ -67,11 +69,11 @@
   <div id="fullpage">
     <section class="section intro">
       <div class="inner">
-        <div class="typing-container">
+        <div class="typing-container" data-aos="fade-down">
           <span class="typing-line" id="line1"></span>
           <span class="typing-line" id="line2"></span>
         </div>
-        <div class="btn_intro">
+        <div class="btn_intro" data-aos="fade-right" data-aos-duration="2000">
           <div class="btn">
             <a href="#Web">Web</a>
           </div>
@@ -82,7 +84,7 @@
             <a href="#About">Designer</a>
           </div>
         </div>
-        <div class="object"></div>
+        <div class="object" data-aos="zoom-in"></div>
         <div class="scroll">
           scroll
         </div>
@@ -135,7 +137,7 @@
             </dl>
             <dl>
               <dt>Advantages</dt>
-              <dd>#유연한 #도적적인 #끈기있는 #섬세한</dd>
+              <dd>#유연한 #도전적인 #끈기있는 #섬세한</dd>
               <button class="btn_open active"><img src="images/btn_plus.png" alt="자세히보기"></button>
               <button class="btn_close"><img src="images/btn_close.png" alt="보기닫기"></button>
             </dl>
@@ -455,6 +457,10 @@
       </div>
     </section>
   </div>
+
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>

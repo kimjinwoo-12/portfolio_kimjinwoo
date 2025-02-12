@@ -13,11 +13,13 @@ $('#fullpage').fullpage({
 
   afterLoad: function (origin, destination, direction) {
     console.log("현재 섹션:", destination.index, "방향:", direction);
+    // 🔄 Fullpage.js 페이지 이동 후 AOS 재적용
+    AOS.refresh();
   },
 
   afterResize: function () {
     fullpage_api.reBuild();
-  }
+  },
 });
 
 
@@ -64,56 +66,6 @@ $(".about_me dl .btn_close").click(function () {
   $(this).siblings(".btn_open").fadeIn();
 })
 
-
-/* //web swiper
-document.addEventListener("DOMContentLoaded", function () {
-  var containor_web = new Swiper(".containor_web", {
-    autoplay: {
-      delay: 20000, // 슬라이드가 머무르는 시간, 5000=5초
-      disableOnInteraction: false, // 스와이프 후 자동 재생이 비활성화 되지 않음
-    },
-    speed: 1000, // 슬라이드 동작 속도
-    navigation: {
-      nextEl: '.next-button-web', // 다음 버튼
-      prevEl: '.prev-button-web', // 이전 버튼
-    },
-    effect: "fade", // 페이드 효과
-    fadeEffect: {
-      crossFade: true,
-    },
-    loop: true,
-    speed: 1000,
-    on: {
-      slideChangeTransitionStart: function () {
-        let progress = (this.realIndex + 1) / this.slides.length * 100;
-        document.querySelector(".progress-fill-web").style.width = progress + "%";
-      }
-    }
-  });
-});
-
-//graphic swiper
-document.addEventListener("DOMContentLoaded", function () {
-  var containor_graphic = new Swiper(".containor_graphic", {
-    navigation: {
-      nextEl: '.next-button-graphic', // 다음 버튼
-      prevEl: '.prev-button-graphic', // 이전 버튼
-    },
-    effect: "fade", // 페이드 효과
-    fadeEffect: {
-      crossFade: true,
-    },
-    loop: true,
-    speed: 1000,
-    on: {
-      slideChangeTransitionStart: function () {
-        let progress = (this.realIndex + 1) / this.slides.length * 100;
-        document.querySelector(".progress-fill-graphic").style.width = progress + "%";
-      }
-    }
-  });
-}); */
-
 document.addEventListener("DOMContentLoaded", function () {
   function initializeSwiper(containerClass, nextButton, prevButton, progressClass, autoplay = false) {
     return new Swiper(containerClass, {
@@ -121,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         delay: 20000,
         disableOnInteraction: false,
       } : false,
-      speed: 1000,
+      speed: 500,
       navigation: {
         nextEl: nextButton,
         prevEl: prevButton,
